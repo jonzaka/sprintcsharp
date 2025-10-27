@@ -13,19 +13,23 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Seed do banco (InMemory)
+// Seed InMemory
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated();
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 app.UseHttpsRedirection();
+
+// Swagger SEMPRE habilitado
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// Controllers
 app.MapControllers();
+
+// Redireciona raiz para Swagger (evita 404 em "/")
+app.MapGet("/", () => Results.Redirect("/swagger"));
+
 app.Run();
