@@ -1,4 +1,9 @@
 # 📈 Investment API
+Breno Silva - RM97864
+Enrico Marquez - RM99325
+Gustavo Dias - RM550820
+Joel Barros - RM550378
+Leonardo moreira - RM550988
 
 API desenvolvida em ASP.NET Core Web API com Entity Framework Core para a Sprint 4 da FIAP.
 
